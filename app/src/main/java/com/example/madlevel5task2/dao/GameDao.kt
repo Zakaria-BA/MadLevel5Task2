@@ -1,5 +1,6 @@
 package com.example.madlevel5task2.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -12,8 +13,11 @@ interface GameDao {
     suspend fun insertGame(game: Game)
 
     @Delete
-    suspend fun deleteNote(game: Game)
+    suspend fun deleteGame(game: Game)
 
     @Query("DELETE FROM gameTable")
     suspend fun deleteAllGames()
+
+    @Query("SELECT * FROM gameTable order by gameTable.release_date")
+    fun getAllGames(): LiveData<Game?>
 }

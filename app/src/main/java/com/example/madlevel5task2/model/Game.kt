@@ -14,7 +14,7 @@ data class Game(
     @ColumnInfo(name = "platform")
     var platform: String,
 
-    @ColumnInfo(name = "releaste_date")
+    @ColumnInfo(name = "release_date")
     var releaseDate: Date,
 
     @PrimaryKey(autoGenerate = true)
