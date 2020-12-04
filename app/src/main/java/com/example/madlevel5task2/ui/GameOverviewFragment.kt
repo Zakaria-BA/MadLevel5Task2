@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +24,6 @@ class GameOverviewFragment : Fragment() {
 
     private val games = arrayListOf<Game>()
     private val gameAdapter = GameAdapter(games)
-
     private val viewModel: GameViewModel by viewModels()
 
     override fun onCreateView(
@@ -37,6 +37,7 @@ class GameOverviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        observeAddGameresult()
     }
 
     private fun initViews(){
@@ -45,6 +46,13 @@ class GameOverviewFragment : Fragment() {
         createItemTouchHelper().attachToRecyclerView(rvGames)
     }
 
+    private fun observeAddGameresult(){
+        viewModel.games.observe(viewLifecycleOwner, Observer { games ->
+            this.games.clear()
+            this.games.addAll(games)
+            gameAdapter.notifyDataSetChanged()
+        })
+    }
 
     private fun createItemTouchHelper(): ItemTouchHelper {
         val callback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
