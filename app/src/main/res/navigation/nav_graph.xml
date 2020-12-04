@@ -4,25 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/FirstFragment">
-
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/gameOverviewFragment"
         android:name="com.example.madlevel5task2.ui.GameOverviewFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/game_overview_fragment">
-
+        android:label="game_overview_fragment"
+        tools:layout="@layout/game_overview_fragment" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_gameOverviewFragment_to_addGameFragment"
+            app:destination="@id/addGameFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/addGameFragment"
         android:name="com.example.madlevel5task2.ui.AddGameFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/add_game_fragment">
-
+        android:label="add_game_fragment"
+        tools:layout="@layout/add_game_fragment" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_addGameFragment_to_gameOverviewFragment"
+            app:destination="@id/gameOverviewFragment" />
     </fragment>
 </navigation>

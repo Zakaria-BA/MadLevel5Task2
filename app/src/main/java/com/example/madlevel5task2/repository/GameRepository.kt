@@ -26,7 +26,7 @@ class GameRepository(context: Context) {
         gameDao.deleteGame(game)
     }
 
-    suspend fun getAllGames(): LiveData<Game?>{
+    fun getAllGames(): LiveData<List<Game>>{
         return gameDao.getAllGames()
     }
 }

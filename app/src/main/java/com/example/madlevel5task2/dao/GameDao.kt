@@ -19,5 +19,5 @@ interface GameDao {
     suspend fun deleteAllGames()
 
     @Query("SELECT * FROM gameTable order by gameTable.release_date")
-    fun getAllGames(): LiveData<Game?>
+    fun getAllGames(): LiveData<List<Game>>
 }
