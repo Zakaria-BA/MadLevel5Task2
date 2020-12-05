@@ -48,8 +48,8 @@ class GameOverviewFragment : Fragment() {
 
     private fun observeAddGameresult(){
         viewModel.games.observe(viewLifecycleOwner, Observer { games ->
-            this.games.clear()
-            this.games.addAll(games)
+            this@GameOverviewFragment.games.clear()
+            this@GameOverviewFragment.games.addAll(games)
             gameAdapter.notifyDataSetChanged()
         })
     }
